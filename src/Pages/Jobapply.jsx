@@ -4,42 +4,42 @@ import Authuse from '../hook/Authuse';
 import Swal from 'sweetalert2';
 
 const Jobapply = () => {
-   const{id} = useParams();
-   const {user} = Authuse()
-   console.log(id)
+    const { id } = useParams();
+    const { user } = Authuse()
+    console.log(id)
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
         // Handle form submission logic, e.g., send data to API
-      const form =e.target;
-      const name = form.name.value;
-      const email =form.email.value;
-      const phone =form.phone.value;
-    //   const resume = form.resume.value;
-      const coverLetter= form.coverLetter.value;
-      const applicaned ={job_id:id,name,email:user.email,phone,coverLetter}
-      console.log( applicaned )      
-        fetch('http://localhost:5000/job-application',{
-            method:'POST',
+        const form = e.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const phone = form.phone.value;
+        //   const resume = form.resume.value;
+        const coverLetter = form.coverLetter.value;
+        const applicaned = { job_id: id, name, email: user.email, phone, coverLetter }
+        console.log(applicaned)
+        fetch('https://job-portal-severside-management-system.vercel.app/job-application', {
+            method: 'POST',
             headers: {
-                'content-type':'application/json'
+                'content-type': 'application/json'
             },
-            body: JSON.stringify( applicaned )
-            
-            
+            body: JSON.stringify(applicaned)
+
+
         })
-        .then(res=>res.json())
-        .then(data=>{
-            console.log(data)
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "Your work has been saved",
-                showConfirmButton: false,
-                timer: 1500
-              });
-        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Your work has been saved",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            })
     };
 
     return (
@@ -50,7 +50,7 @@ const Jobapply = () => {
             </div>
 
             <form
-             onSubmit={handleSubmit}
+                onSubmit={handleSubmit}
                 className="mt-6 bg-white p-6 rounded-lg shadow-md max-w-2xl mx-auto"
             >
                 {/* Full Name */}
@@ -62,8 +62,8 @@ const Jobapply = () => {
                         type="text"
                         id="name"
                         name="name"
-                   
-                    
+
+
                         className="w-full mt-2 p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         placeholder="Enter your full name"
                         required
@@ -79,11 +79,11 @@ const Jobapply = () => {
                         type="email"
                         id="email"
                         name="email"
-                    
-            
+
+
                         className="w-full mt-2 p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         placeholder="Enter your email"
-                        
+
                     />
                 </div>
 
@@ -96,8 +96,8 @@ const Jobapply = () => {
                         type="tel"
                         id="phone"
                         name="phone"
-                        
-                       
+
+
                         className="w-full mt-2 p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         placeholder="Enter your phone number"
                         required
@@ -128,8 +128,8 @@ const Jobapply = () => {
                     <textarea
                         id="coverLetter"
                         name="coverLetter"
-                        
-                    
+
+
                         className="w-full mt-2 p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         placeholder="Write a brief cover letter"
                         rows="5"

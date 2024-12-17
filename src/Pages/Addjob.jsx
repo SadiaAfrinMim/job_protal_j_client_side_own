@@ -22,7 +22,7 @@ const AddJob = () => {
         newJob.requirements = newJob.requirements.split('\n');
         newJob.responsibilities = newJob.responsibilities.split('\n');
 
-        fetch('http://localhost:5000/jobs', {
+        fetch('https://job-portal-severside-management-system.vercel.app/jobs', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -169,14 +169,14 @@ const AddJob = () => {
                     <div>
                         <label className="block text-sm font-medium text-gray-700">HR Email</label>
                         <input
-    type="email"
-    defaultValue={user.email} // Populate the field with the user's email
-    name="hr_email"
-    readOnly // Make the input read-only
-    className="input input-bordered w-full"
-    placeholder="Enter HR email"
-    required
-/>
+                            type="email"
+                            defaultValue={user.email} // Populate the field with the user's email
+                            name="hr_email"
+                            readOnly // Make the input read-only
+                            className="input input-bordered w-full"
+                            placeholder="Enter HR email"
+                            required
+                        />
 
                     </div>
                     <div>

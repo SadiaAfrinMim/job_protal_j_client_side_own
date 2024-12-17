@@ -2,31 +2,37 @@ import React, { useEffect, useState } from 'react';
 import Authuse from '../hook/Authuse';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import UseAxiosSecure from '../Useaxiossecure/UseAxiosSecure';
 
 const MyApplications = () => {
     const { user } = Authuse();
     const [jobs, setJobs] = useState([]);
+
+    const axiosSecure = UseAxiosSecure()
     // const navigate = useNavigate();
 
     useEffect(() => {
-      
-            // Redirect to login page if the user is not logged in
-            // navigate('/login');
-            // return;
-  
 
-        axios.get(`http://localhost:5000/job-application?email=${user.email}`,{withCredentials: true})
-        .then(res=>setJobs(res.data))
+        // Redirect to login page if the user is not logged in
+        // navigate('/login');
+        // return;
+
+        axiosSecure.get(`/job-application?email=${user.email}`)
+            .then(res => setJobs(res.data))
+
+
+        // axios.get(`https://job-portal-severside-management-system.vercel.app/job-application?email=${user.email}`,{withCredentials: true})
+        // .then(res=>setJobs(res.data))
 
         // Fetch the job applications if the user is logged in
-        // fetch(`http://localhost:5000/job-application?email=${user.email}`)
+        // fetch(`https://job-portal-severside-management-system.vercel.app/job-application?email=${user.email}`)
         //     .then(res => res.json())
         //     .then(data => setJobs(data))
         //     .catch(error => console.error('Error fetching applications:', error));
     }, [user.email]);
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/job-application/${id}`, {
+        fetch(`https://job-portal-severside-management-system.vercel.app/job-application/${id}`, {
             method: 'DELETE',
         })
             .then(res => res.json())

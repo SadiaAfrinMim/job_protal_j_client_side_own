@@ -10,7 +10,7 @@ const View = () => {
         const data = {
             status: e.target.value
         }
-        fetch(`http://localhost:5000/job-application/${id}`, {
+        fetch(`https://job-portal-severside-management-system.vercel.app/job-application/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'

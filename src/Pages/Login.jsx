@@ -20,7 +20,7 @@ const Login = () => {
         handleLogin(email, password)
             .then((result) => {
                 const user = { email };
-                axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
+                axios.post('https://job-portal-severside-management-system.vercel.app/jwt', user, { withCredentials: true })
                     .then((res) => {
                         console.log('JWT response:', res.data);
                         navigate(from);
@@ -35,7 +35,7 @@ const Login = () => {
         handleSignIn()
             .then((result) => {
                 const user = { email: result.user.email };
-                axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
+                axios.post('https://job-portal-severside-management-system.vercel.app/jwt', user, { withCredentials: true })
                     .then((res) => {
                         console.log('JWT response:', res.data);
                         navigate(from);

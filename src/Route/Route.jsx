@@ -25,7 +25,7 @@ const router = createBrowserRouter([
       {
         path: '/job/:id',
         element: <Privateroute><Jobdetails></Jobdetails></Privateroute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/job/${params.id}`)
+        loader: ({ params }) => fetch(`https://job-portal-severside-management-system.vercel.app/job/${params.id}`)
       },
       {
         path: '/myapplication',
@@ -47,9 +47,9 @@ const router = createBrowserRouter([
       {
         path: '/viewApplications/:job_id',
         element: <Privateroute><ViewApplication /></Privateroute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/job-applications/jobs/${params.job_id}`),
-    },
-    
+        loader: ({ params }) => fetch(`https://job-portal-severside-management-system.vercel.app/job-applications/jobs/${params.job_id}`),
+      },
+
       {
         path: '/jobapply/:id',
         element: <Privateroute><Jobapply></Jobapply></Privateroute>
